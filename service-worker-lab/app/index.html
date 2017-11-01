@@ -48,7 +48,7 @@ limitations under the License.
           console.log('Service worker not supported');
           return;
         }
-        navigator.serviceWorker.register('./below/service-worker.js')
+        navigator.serviceWorker.register('service-worker.js', {scope: './below'})
         .then(function(registration) {
           console.log('Registered at scope:', registration.scope);
         })
