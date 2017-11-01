@@ -30,21 +30,22 @@ var app = (function() {
   }
 
   function fetchJSON() {
-    fetch('examples/animals.json')
-    .then(validateResponse)
-    .then(logResult)
+    fetch('examples/animals.json') // 1
+    .then(validateResponse) // 2
+    .then(readResponseAsJSON) // 3
+    .then(logResult) // 4
     .catch(logError);
   }
 
   function validateResponse(response) {
     if (!response.ok) {
-      throw Error(response.statusText);
+       throw Error(response.statusText);
     }
     return response;
   }
 
   function readResponseAsJSON(response) {
-    // TODO 2.4
+    return response.json();
   }
 
   function showImage(responseAsBlob) {
